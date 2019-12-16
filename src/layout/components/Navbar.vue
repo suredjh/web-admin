@@ -2,9 +2,9 @@
   <div class="navbar">
     <hamburger :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar" />
 
-    <breadcrumb class="breadcrumb-container" />
+    <userinfo></userinfo>
 
-    <div class="right-menu">
+    <!-- <div class="right-menu">
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
           <img :src="avatar+'?imageView2/1/w/80/h/80'" class="user-avatar">
@@ -27,19 +27,19 @@
           </el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
-import Breadcrumb from '@/components/Breadcrumb'
 import Hamburger from '@/components/Hamburger'
+import Userinfo from '@/components/User'
 
 export default {
   components: {
-    Breadcrumb,
-    Hamburger
+    Hamburger,
+    Userinfo
   },
   computed: {
     ...mapGetters([
@@ -60,12 +60,20 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@/styles/variables.scss';
+.user-info {
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+}
 .navbar {
   height: 50px;
   overflow: hidden;
   position: relative;
-  background: #fff;
+  background: $commonBgcolor;
   box-shadow: 0 1px 4px rgba(0,21,41,.08);
+  display: flex;
+  color: $commonTxtColor;
 
   .hamburger-container {
     line-height: 46px;
@@ -80,9 +88,9 @@ export default {
     }
   }
 
-  .breadcrumb-container {
-    float: left;
-  }
+  // .breadcrumb-container {
+  //   float: left;
+  // }
 
   .right-menu {
     float: right;

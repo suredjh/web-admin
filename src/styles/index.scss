@@ -21,6 +21,10 @@ html {
   box-sizing: border-box;
 }
 
+.el-breadcrumb__inner a {
+  color: $commonTxtColor;
+}
+
 #app {
   height: 100%;
 }
@@ -62,4 +66,56 @@ div:focus {
 // main-container global css
 .app-container {
   padding: 20px;
+}
+
+// common
+.fcenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.padding10 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.el-table {
+  color: #ffffff;
+  .even-row {
+    background: $conBgColor;
+    td {
+      text-align: center;
+    }
+    &.hover-row {
+      td {
+        background: $conBgColor !important;
+      }
+    }
+  }
+  .odd-row {
+    background: $commonBgcolor;
+    text-align: center;
+    td {
+      text-align: center;
+    }
+    &.hover-row {
+      td {
+        background: $commonBgcolor !important;
+      }
+    }
+  }
+  tr.table-row-class-name {
+    th {
+      background: $tableHeaderRowBgColor;
+      color: #ffffff;
+      text-align: center;
+    }
+  }
+}
+
+.el-table td, .el-table th.is-leaf, .el-table--border, .el-table--group, .el-table--border td, .el-table--border th, .el-table__body-wrapper .el-table--border.is-scrolling-left~.el-table__fixed {
+  border-color: $lineColor;
+}
+
+.el-table--border::after, .el-table--group::after, .el-table::before {
+  background-color: transparent;
 }
