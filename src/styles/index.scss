@@ -70,12 +70,66 @@ div:focus {
 
 // common
 .fcenter {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+.white-line {
+  width: 100%;
+  border-bottom: 1px solid #ffffff;
+  padding-top: 20px;
+}
 .padding10 {
   padding-top: 10px;
+  padding-bottom: 10px;
+}
+.transparent {
+  background-color: transparent !important;
+}
+.active-color-red {
+  color: $activeTxtRedColor;
+}
+.container-box {
+  width: 100%;
+  overflow: hidden;
+  margin-top: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  background-color: $commonBgcolor;
+}
+.txt-container-box {
+  width: 100%;
+  overflow: hidden;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.space-between {
+  justify-content: space-between;
+}
+.flex-end {
+  justify-content: flex-end;
+}
+.flex-start {
+  justify-content: flex-start;
+}
+.flex-column {
+  flex-direction: column;
+}
+.inline-container-box {
+  width: 100%;
+  margin-top: 10px;
+  overflow: hidden;
+}
+.inline-container {
+  height: 300px;
+  padding: 10px;
+  background-color: $commonBgcolor;
+}
+.container-title, .inline-container-name {
+  color: $txtScolor;
+}
+.inline-container-name {
   padding-bottom: 10px;
 }
 .el-table {
@@ -112,10 +166,88 @@ div:focus {
   }
 }
 
+.inline-container {
+  .el-table {
+    color: $commonTxtColor;
+    .even-row {
+      background: $conBgColor;
+      td {
+        text-align: center;
+      }
+      &.hover-row {
+        td {
+          background: $conBgColor !important;
+        }
+      }
+    }
+    .odd-row {
+      background: $commonBgcolor;
+      text-align: center;
+      td {
+        text-align: center;
+      }
+      &.hover-row {
+        td {
+          background: $commonBgcolor !important;
+        }
+      }
+    }
+    tr.table-row-class-name {
+      th {
+        background: $tableHeaderRowBgColor;
+        color: $commonTxtColor;
+        text-align: center;
+      }
+    }
+  }
+}
+
+.scrollbar-wrapper, .el-scrollbar__wrap {
+  background-color: rgb(25, 31, 43);
+}
+
 .el-table td, .el-table th.is-leaf, .el-table--border, .el-table--group, .el-table--border td, .el-table--border th, .el-table__body-wrapper .el-table--border.is-scrolling-left~.el-table__fixed {
   border-color: $lineColor;
 }
 
 .el-table--border::after, .el-table--group::after, .el-table::before {
   background-color: transparent;
+}
+.el-dialog__header {
+  background-color: $dialogTopBgColor;
+  .el-dialog__title {
+    color: $btnTxtColor;
+  }
+}
+.el-dialog__headerbtn .el-dialog__close {
+  color: $btnTxtColor;
+  font-size: 24px;
+}
+.el-dialog__body, .el-table__body-wrapper {
+  background-color: $commonBgcolor;
+}
+.el-form-item__label, .el-time-panel__btn, .el-time-spinner__item.active:not(.disabled) {
+  color: $btnTxtColor;
+}
+.container-box, .inline-container {
+  .el-form-item__label, .el-time-panel__btn, .el-time-spinner__item.active:not(.disabled) {
+    color: $commonTxtColor;
+  }
+}
+.el-tabs__item {
+  color: $commonTxtColor;
+}
+.el-tabs__nav-wrap::after {
+  background-color: $commonBgcolor;
+}
+.el-input__inner, .el-textarea__inner, .el-range-editor .el-range-input, .el-picker-panel, .el-picker-panel__footer, .el-time-panel__footer {
+  background-color: $conBgColor;
+  color: $formInputColor;
+}
+.el-select-dropdown__item, .el-scrollbar {
+  background-color: $conBgColor;
+}
+.el-select-dropdown__item.hover, .el-select-dropdown__item:hover {
+  background-color: $commonBgcolor;
+  color: $formInputColor;
 }

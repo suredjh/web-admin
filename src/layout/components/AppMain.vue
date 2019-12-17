@@ -1,6 +1,6 @@
 <template>
   <section class="app-main">
-    <div class="breadcrumb-container">
+    <div class="breadcrumb-container" v-if="key != '/dashboard'">
       <breadcrumb />
     </div>
     <transition name="fade-transform" mode="out-in">
