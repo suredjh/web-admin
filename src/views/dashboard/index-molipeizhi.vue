@@ -3,7 +3,7 @@
     <el-tabs v-model="activeName" @tab-click="handleClick">
       <el-tab-pane label="财务低价" name="first">
         <div class="fcenter inline-container-box space-between">
-          <div class="fcenter flex-column space-between" style="height: 440px;width: 55%; align-items:space-between;">
+          <div class="fcenter flex-column space-between" style="height: 440px;width: 58%; align-items:space-between;">
             <div class="inline-container flex-column" style="width: 100%;height: 300px;">
               <div class="inline-container-name">【合同主体】</div>
               <div class="fcenter tab-list">
@@ -31,7 +31,7 @@
               </div>
             </div>
           </div>
-          <div class="inline-container" style="width: 44%; height: 440px;">
+          <div class="inline-container table-overflow-visible" style="width: 41%; height: 440px;">
             <div class="inline-container-name">代购件</div>
             <el-table
               :data="tableData"
@@ -46,8 +46,18 @@
                 label="序号">
               </el-table-column>
               <el-table-column
-                prop="name"
+                width="100"
                 label="所属类别">
+                <template>
+                  <el-select size="mini" v-model="value" placeholder="请选择">
+                    <el-option
+                      v-for="item in options"
+                      :key="item.value"
+                      :label="item.label"
+                      :value="item.value">
+                    </el-option>
+                  </el-select>
+                </template>
               </el-table-column>
               <el-table-column
                 prop="name"
@@ -57,7 +67,7 @@
                 label="操作">
                 <template>
                   <div>
-                    <span>+</span> <span>-</span>
+                    <i class="el-icon-btn el-icon-plus"></i> <i class="el-icon-btn el-icon-minus"></i>
                   </div>
                 </template>
               </el-table-column>
@@ -184,7 +194,7 @@ export default {
   data () {
     return {
       inputStyle: {
-        width: '200px'
+        width: '140px'
       },
       activeName: 'first',
       mock_date: '',
@@ -200,6 +210,23 @@ export default {
         resource: '',
         desc: ''
       },
+      options: [{
+        value: '选项1',
+        label: '黄金糕'
+      }, {
+        value: '选项2',
+        label: '双皮奶'
+      }, {
+        value: '选项3',
+        label: '蚵仔煎'
+      }, {
+        value: '选项4',
+        label: '龙须面'
+      }, {
+        value: '选项5',
+        label: '北京烤鸭'
+      }],
+      value: '黄金糕',
       tableData: [{
           date: '2016-05-02',
           name: '王小虎',
@@ -251,6 +278,7 @@ export default {
   padding-top: 25px;
   .container-title {
     padding-left: 20px;
+    font-size: 14px;
   }
 }
 .txt-container-box {

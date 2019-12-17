@@ -126,11 +126,28 @@ div:focus {
   padding: 10px;
   background-color: $commonBgcolor;
 }
-.container-title, .inline-container-name {
+.container-title, .inline-container-name, .txt-select-color {
   color: $txtScolor;
 }
 .inline-container-name {
   padding-bottom: 10px;
+}
+.el-icon-btn {
+  font-size: 20px;
+  font-weight: bold;
+  padding-left: 5px;
+  cursor: pointer;
+  &:hover{
+    color: #ffffff;
+  }
+}
+.icon-remove-btn {
+  font-weight: bold;
+  font-size: 28px;
+  color: $btnBgColor;
+  &:hover {
+    color: #409EFF;
+  }
 }
 .el-table {
   color: #ffffff;
@@ -251,3 +268,39 @@ div:focus {
   background-color: $commonBgcolor;
   color: $formInputColor;
 }
+
+.table-overflow-visible {
+  cursor: pointer;
+  .el-input__inner, .el-select-dropdown, .el-select:hover .el-input__inner, .el-select .el-input.is-focus .el-input__inner {
+    border-color: transparent;
+    background-color: inherit;
+  }
+  .el-input__inner {
+    padding-left: 5px;
+  }
+}
+
+
+.el-carousel__item h3 {
+  color: #475669;
+  font-size: 14px;
+  opacity: 0.75;
+  line-height: 200px;
+  margin: 0;
+}
+
+.el-carousel__item, .el-carousel__mask {
+  background-color: $commonBgcolor;
+  opacity: 0.3;
+  &.is-active {
+    opacity: 1;
+  }
+}
+
+// .el-carousel__item:nth-child(2n) {
+//   background-color: #99a9bf;
+// }
+
+// .el-carousel__item:nth-child(2n+1) {
+//   background-color: #d3dce6;
+// }
