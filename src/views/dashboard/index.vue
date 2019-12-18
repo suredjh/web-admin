@@ -24,7 +24,9 @@
     <div class="fcenter container-box padding10 space-between transparent">
       <div class="fcenter flex-column flex-start index-list">
         <div class="fcenter top-info">
-          <div class="list-img"></div>
+          <div class="fcenter list-img">
+            <img :src="img1" alt="" />
+          </div>
           <div :style="{paddingLeft: '10px'}">销售收入</div>
         </div>
         <div class="list-num"><span class="active-color-red">1212121221</span> 元</div>
@@ -34,24 +36,32 @@
         </div>
       </div>
       <div class="fcenter flex-column flex-start index-list">
-        <div class="list-img"></div>
+        <div class="fcenter list-img">
+          <img :src="img2" alt="" />
+        </div>
         <div class="list-ind">综合毛利</div>
         <div class="list-num txt-select-color">24%</div>
         <div class="list-tag">同期增长：<span class="txt-select-color">15%</span></div>
       </div>
       <div class="fcenter flex-column flex-start index-list">
-        <div class="list-img"></div>
+        <div class="fcenter list-img">
+          <img :src="img3" alt="" />
+        </div>
         <div class="list-ind">费用报销</div>
         <div class="list-num"><span class="active-color-red">1212121221</span> 元</div>
       </div>
       <div class="fcenter flex-column flex-start index-list">
-        <div class="list-img"></div>
+        <div class="fcenter list-img">
+          <img :src="img4" alt="" />
+        </div>
         <div class="list-ind">财务产值</div>
         <div class="list-num"><span class="active-color-red">1212121221</span> 元</div>
         <div class="list-tag">同期增长：<span class="txt-select-color">15%</span></div>
       </div>
       <div class="fcenter flex-column flex-start index-list">
-        <div class="list-img"></div>
+        <div class="fenter list-img">
+          <img :src="img5" alt="" />
+        </div>
         <div class="list-ind">运营提成</div>
         <div class="list-num"><span class="active-color-red">1212121221</span> 元</div>
       </div>
@@ -60,7 +70,9 @@
       <div class="inline-container" style="width: 55%;">
         <div class="fcenter space-between inline-container-name">
           <div class="fcenter flex-start inline-title">
-            <div class="inline-timg"></div>
+            <div class="fcenter inline-timg">
+              <img :src="img6" alt="" />
+            </div>
             <span>产品系列</span>
           </div>
           <el-select v-model="value" placeholder="请选择" size="mini">
@@ -72,170 +84,167 @@
             </el-option>
           </el-select>
         </div>
-        <el-table
-          :data="tableData"
-          border
-          height="250"
-          :row-class-name="tableRowClassName"
-          header-row-class-name="table-row-class-name"
-          align="center"
-          style="width: 100%">
-          <el-table-column
-            prop="name"
-            label="项目">
-          </el-table-column>
-          <el-table-column
-            prop="name"
-            label="材料">
-          </el-table-column>
-          <el-table-column
-            prop="name"
-            label="型号/花色">
-          </el-table-column>
-          <el-table-column
-            prop="name"
-            label="造型/封边">
-          </el-table-column>
-          <el-table-column
-            prop="name"
-            label="备注">
-          </el-table-column>
-        </el-table>
+        <v-chart :options="barOptions" autoresize theme="light"></v-chart>
       </div>
       <div class="inline-container" style="width: 44%;">
-        <div class="inline-container-name">价格</div>
-        <el-table
-          :data="tableData"
-          border
-          height="250"
-          :row-class-name="tableRowClassName"
-          header-row-class-name="table-row-class-name"
-          align="center"
-          style="width: 100%">
-          <el-table-column
-            prop="name"
-            label="项目">
-          </el-table-column>
-          <el-table-column
-            prop="name"
-            label="数量">
-          </el-table-column>
-          <el-table-column
-            prop="name"
-            label="单价">
-          </el-table-column>
-          <el-table-column
-            prop="name"
-            label="金额">
-          </el-table-column>
-          <el-table-column
-            prop="name"
-            label="备注">
-          </el-table-column>
-        </el-table>
+        <div class="fcenter space-between inline-container-name">
+          <div class="fcenter flex-start inline-title">
+            <div class="fcenter inline-timg">
+              <img :src="img7" alt="" />
+            </div>
+            <span>报价方式</span>
+          </div>
+        </div>
+        <div style="width: 100%; height: 300px">
+          <v-chart :options="circleOptions" autoresize theme="light"></v-chart>
+        </div>
       </div>
     </div>
-    <!-- <el-table
-      :data="tableData"
-      border
-      :row-class-name="tableRowClassName"
-      header-row-class-name="table-row-class-name"
-      align="center"
-      style="width: 100%">
-      <el-table-column
-        prop="name"
-        label="合同单号">
-      </el-table-column>
-      <el-table-column
-        prop="name"
-        label="产品系列">
-      </el-table-column>
-      <el-table-column
-        prop="name"
-        label="报价方式">
-      </el-table-column>
-      <el-table-column
-        prop="name"
-        label="下单客户">
-      </el-table-column>
-      <el-table-column
-        prop="name"
-        label="客户电话">
-      </el-table-column>
-      <el-table-column
-        prop="name"
-        label="合同金额">
-      </el-table-column>
-      <el-table-column
-        prop="name"
-        label="综合毛利率">
-      </el-table-column>
-      <el-table-column
-        prop="date"
-        label="确认日期">
-      </el-table-column>
-      <el-table-column
-        prop="date"
-        label="创建时间">
-      </el-table-column>
-      <el-table-column
-        label="操作">
-        <template>
-          <div>
-            <span>预览</span> <span>编辑</span>
-          </div>
-        </template>
-      </el-table-column>
-    </el-table>
-    <div class="padding10 fcenter">
-      <el-pagination
-        background
-        layout="pager"
-        :total="tableData.length">
-      </el-pagination>
-    </div> -->
-    <!-- 新增弹层 -->
-    <!-- <el-dialog
-      title="提示"
-      :visible.sync="dialogVisible"
-      width="30%">
-      <el-form ref="form" :model="form" label-width="80px">
-        <el-form-item label="代码">
-          <el-input v-model="form.name"></el-input>
-        </el-form-item>
-        <el-form-item label="系列名称">
-          <el-input v-model="form.name"></el-input>
-        </el-form-item>
-        <el-form-item label="所属类别">
-          <el-select v-model="form.region" placeholder="请选择活动区域">
-            <el-option label="区域一" value="shanghai"></el-option>
-            <el-option label="区域二" value="beijing"></el-option>
-          </el-select>
-        </el-form-item>
-        <el-form-item label="单位">
-          <el-select v-model="form.region" placeholder="请选择活动区域">
-            <el-option label="区域一" value="shanghai"></el-option>
-            <el-option label="区域二" value="beijing"></el-option>
-          </el-select>
-        </el-form-item>
-        <el-form-item label="备注">
-          <el-input type="textarea" v-model="form.desc"></el-input>
-        </el-form-item>
-        <el-form-item>
-          <el-button type="primary" size="mini">确定</el-button>
-        </el-form-item>
-      </el-form>
-    </el-dialog> -->
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
 import Echarts from 'vue-echarts'
+import "echarts/lib/chart/bar";
+import "echarts/lib/chart/line";
+import "echarts/lib/chart/pie";
+import "echarts/lib/component/tooltip";
+import "echarts/lib/component/legend";
+import "echarts/lib/component/markPoint";
+import "echarts/lib/component/markLine";
+import "echarts/lib/component/graphic";
+import img1 from '@/assets/icons/icon-13.png';
+import img2 from '@/assets/icons/icon-14.png';
+import img3 from '@/assets/icons/icon-15.png';
+import img4 from '@/assets/icons/icon-16.png';
+import img5 from '@/assets/icons/icon-17.png';
+import img6 from '@/assets/icons/icon-18.png';
+import img7 from '@/assets/icons/icon-19.png';
 export default {
   name: 'Dashboard',
+  components: {
+    "v-chart": Echarts
+  },
   data () {
     return {
+      img1,
+      img2,
+      img3,
+      img4,
+      img5,
+      img6,
+      img7,
+      barOptions: {
+        textStyle: {
+          color: '#fff'
+        },
+        grid: {
+          top: 30,
+          borderColor: "#ffffff",
+          height: 180
+        },
+        xAxis: {
+            type: 'category',
+            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            axisLine: {
+              lineStyle: {
+                color: "#fff"
+              }
+            },
+            axisTick: {
+              show: false
+            },
+            splitLine: {
+              show: false
+            },
+            boundaryGap: true
+        },
+        yAxis: {
+            type: 'value',
+            axisLine: {
+              lineStyle: {
+                color: "#fff"
+              }
+            },
+            splitLine: {
+              lineStyle: {
+                type: 'dashed',
+                color: '#999'
+              }
+            },
+            axisTick: {
+              show: false
+            }
+        },
+        series: [{
+            data: [120, 200, 150, 80, 70, 110, 130],
+            type: 'bar',
+            itemStyle: {
+              barWidth: '40%',
+              barBorderRadius: 10
+            },
+            barWidth: '40%'
+        }]
+      },
+      circleOptions: {
+        graphic: {
+          type: "group",
+          top: "100",
+          left: "26%",
+          children: [
+            {
+              type: "text",
+              left: "100%",
+              style: {
+                text: "￥100000万",
+                textAlign: "center",
+                textVerticaAlign: "middle",
+                fill: "#7f50d4",
+                font: "15px 'Helvetica',sans-serif"
+              }
+            }
+          ]
+        },
+        tooltip : {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} : {c} ({d}%)"
+        },
+        legend: {
+            x: 'left',
+            top: 220,
+            orient: 'horizontal',
+            data: ['西凉', '益州','兖州','荆州','幽州'],
+            textStyle: {
+              color: "#ffffff"
+            }
+        },
+        series : [
+            {
+                type: 'pie',
+                radius : ['30%', '40%'],
+                center: ['32.5%', '26%'],
+                selectedMode: 'single',
+                label: {
+                  formatter: '{d}%',
+                },
+                data:[
+                    {value:1548, name: '幽州'},
+                    {value:535, name: '荆州'},
+                    {value:510, name: '兖州'},
+                    {value:634, name: '益州'},
+                    {value:735, name: '西凉'}
+                ],
+                itemStyle: {
+                    emphasis: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            }
+        ]
+      },
       checked: false,
       carouselList: [],
       autoplay: false,
@@ -321,13 +330,13 @@ export default {
 .inline-timg {
   width: 30px;
   height: 30px;
-  background-color: #ffffff;
+  // background-color: #ffffff;
   margin-right: 10px;
 }
 .index-list {
   width: 18%;
-  height: 160px;
-  padding-top: 20px;
+  height: 185px;
+  padding-top: 10px;
   background: #2b3648;
   font-size: 16px;
   &:first-child {
@@ -339,9 +348,9 @@ export default {
   
 }
 .list-img {
-  width: 20px;
-  height: 20px;
-  background-color: #ffffff;
+  width: 50px;
+  height: 50px;
+  // background-color: #ffffff;
 }
 .list-ind {
   padding-top: 15px;

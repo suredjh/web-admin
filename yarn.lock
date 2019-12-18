@@ -10299,7 +10299,7 @@ vm-browserify@^1.0.1:
 
 vue-echarts@^4.1.0:
   version "4.1.0"
-  resolved "https://registry.npm.taobao.org/vue-echarts/download/vue-echarts-4.1.0.tgz?cache=0&sync_timestamp=1575623716227&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fvue-echarts%2Fdownload%2Fvue-echarts-4.1.0.tgz#ff4828aaa599e7aaaac95e35297d964192a3af0d"
+  resolved "https://registry.npm.taobao.org/vue-echarts/download/vue-echarts-4.1.0.tgz#ff4828aaa599e7aaaac95e35297d964192a3af0d"
   integrity sha1-/0goqqWZ56qqyV41KX2WQZKjrw0=
   dependencies:
     lodash "^4.17.15"
