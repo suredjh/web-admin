@@ -1,110 +1,138 @@
 <template>
   <div class="dashboard-container">
-    <div class="fcenter container-box padding10 space-between">
-      <div class="container-title">【主要成本配置】</div>
-      <div>
-        <el-button type="primary" size="mini" @click="carouselList.push({})">添加</el-button>
-        <el-button type="danger" size="mini">删除</el-button>
+    <div class="fcenter container-box padding10 space-between transparent">
+      <div class="container-title">
+        <el-checkbox v-model="checked">按年显示</el-checkbox>
+        <el-select v-model="value" placeholder="请选择" size="mini">
+          <el-option
+            v-for="item in options"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value">
+          </el-option>
+        </el-select>
+        <el-select v-model="value" placeholder="请选择" size="mini">
+          <el-option
+            v-for="item in options"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value">
+          </el-option>
+        </el-select>
       </div>
     </div>
-    <div class="container-box transparent" v-if="carouselList.length > 0">
-      <el-carousel type="card" height="240px" :autoplay="autoplay">
-        <el-carousel-item v-for="(item, index) in carouselList" :key="index">
-          <div class="fcenter carousel-top padding10 space-between">
-            <div>
-              名称：<el-input v-model="form.name" size="mini" :style="inputStyle"></el-input>
-            </div>
-            <i class="icon-remove-btn el-icon-remove"></i>
-          </div>
-          <el-table
-            size="mini"
-            :data="tableData"
-            border
-            height="140px"
-            :row-class-name="tableRowClassName"
-            header-row-class-name="table-row-class-name"
-            align="center"
-            style="width: 100%">
-            <el-table-column
-              prop="name"
-              label="名称">
-            </el-table-column>
-            <el-table-column
-              prop="name"
-              label="数量">
-            </el-table-column>
-            <el-table-column
-              width="120"
-              label="所属成本">
-              <template slot-scope="{$index}">
-                <el-select size="mini" v-model="value" placeholder="请选择" :key="$index">
-                  <el-option
-                    v-for="item in options"
-                    :key="item.value"
-                    :label="item.label"
-                    :value="item.value">
-                  </el-option>
-                </el-select>
-              </template>
-            </el-table-column>
-            <el-table-column
-              prop="name"
-              label="单价">
-            </el-table-column>
-            <el-table-column
-              label="操作">
-              <template>
-                <div>
-                  <i class="el-icon-btn el-icon-plus"></i> <i class="el-icon-btn el-icon-minus"></i>
-                </div>
-              </template>
-            </el-table-column>
-          </el-table>
-          <div class="fcenter txt-container-box flex-column">
-            <div class="fcenter flex-end">
-              项目小计：<span class="active-color-red">399</span> 元
-            </div>
-          </div>
-        </el-carousel-item>
-      </el-carousel>
-    </div>
-    <div class="container-box padding10">
-      <div class="inline-container-name">【柜体比例配置】</div>
-      <div class="fcenter tab-list">
-        <div class="fcenter flex-column flex-start">
-          <div class="fcenter flex-start">
-            <div>主体结算金额提成比例：</div>
-            <el-input v-model="form.name" size="mini" :style="inputStyle"></el-input>
-          </div>
-          <div class="fcenter flex-start container-title">销售价XXX元/套米 毛利XX元/套米</div>
+    <div class="fcenter container-box padding10 space-between transparent">
+      <div class="fcenter flex-column flex-start index-list">
+        <div class="fcenter top-info">
+          <div class="list-img"></div>
+          <div :style="{paddingLeft: '10px'}">销售收入</div>
         </div>
-        <div class="fcenter flex-column flex-start">
-          <div class="fcenter flex-start">
-            <div>主体结算金额提成比例：</div>
-            <el-input v-model="form.name" size="mini" :style="inputStyle"></el-input>
-          </div>
-          <div class="fcenter flex-start container-title">销售价XXX元/套米 毛利XX元/套米</div>
+        <div class="list-num"><span class="active-color-red">1212121221</span> 元</div>
+        <div class="fcenter list-tag list-tag-first">
+          <div :style="{paddingRight: '5px'}">同期增长：<span class="txt-select-color">15%</span></div> 
+          <div :style="{paddingLeft: '5px'}">完成情况：<span class="txt-select-color">15%</span></div>
         </div>
       </div>
-    </div>
-    <div class="fcenter txt-container-box space-between">
-      <div class="fcenter flex-end txt-info">
-        <div class="fcenter flex-start txt-info-first">
-          <div class="txt-info-list"><span class="txt-select-color">台面成本：</span><span class="active-color-red">150</span>/套米</div>
-          <div class="txt-info-list"><span class="txt-select-color">地柜成本：</span><span class="active-color-red">150</span>/套米</div>
-          <div class="txt-info-list"><span class="txt-select-color">吊柜成本：</span><span class="active-color-red">150</span>/套米</div>
-        </div>
-        <div class="fcenter flex-end" style="width: auto;">
-          <div class="txt-img"></div>
-          <div>综合毛利率：<span class="active-color-red">XX</span>%</div>
-        </div>
+      <div class="fcenter flex-column flex-start index-list">
+        <div class="list-img"></div>
+        <div class="list-ind">综合毛利</div>
+        <div class="list-num txt-select-color">24%</div>
+        <div class="list-tag">同期增长：<span class="txt-select-color">15%</span></div>
       </div>
-      <!-- <div class="fcenter flex-start remark">备注：1、毛利率=（小计金额-项目成本）/小计金额*100%</div> -->
+      <div class="fcenter flex-column flex-start index-list">
+        <div class="list-img"></div>
+        <div class="list-ind">费用报销</div>
+        <div class="list-num"><span class="active-color-red">1212121221</span> 元</div>
+      </div>
+      <div class="fcenter flex-column flex-start index-list">
+        <div class="list-img"></div>
+        <div class="list-ind">财务产值</div>
+        <div class="list-num"><span class="active-color-red">1212121221</span> 元</div>
+        <div class="list-tag">同期增长：<span class="txt-select-color">15%</span></div>
+      </div>
+      <div class="fcenter flex-column flex-start index-list">
+        <div class="list-img"></div>
+        <div class="list-ind">运营提成</div>
+        <div class="list-num"><span class="active-color-red">1212121221</span> 元</div>
+      </div>
     </div>
-    <div class="fcenter txt-container-box flex-column">
-      <div class="fcenter flex-end">
-        <el-button type="danger" size="mini">关闭</el-button>
-        <el-button type="primary" size="mini">保存</el-button>
+    <div class="fcenter inline-container-box space-between">
+      <div class="inline-container" style="width: 55%;">
+        <div class="fcenter space-between inline-container-name">
+          <div class="fcenter flex-start inline-title">
+            <div class="inline-timg"></div>
+            <span>产品系列</span>
+          </div>
+          <el-select v-model="value" placeholder="请选择" size="mini">
+            <el-option
+              v-for="item in options"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value">
+            </el-option>
+          </el-select>
+        </div>
+        <el-table
+          :data="tableData"
+          border
+          height="250"
+          :row-class-name="tableRowClassName"
+          header-row-class-name="table-row-class-name"
+          align="center"
+          style="width: 100%">
+          <el-table-column
+            prop="name"
+            label="项目">
+          </el-table-column>
+          <el-table-column
+            prop="name"
+            label="材料">
+          </el-table-column>
+          <el-table-column
+            prop="name"
+            label="型号/花色">
+          </el-table-column>
+          <el-table-column
+            prop="name"
+            label="造型/封边">
+          </el-table-column>
+          <el-table-column
+            prop="name"
+            label="备注">
+          </el-table-column>
+        </el-table>
+      </div>
+      <div class="inline-container" style="width: 44%;">
+        <div class="inline-container-name">价格</div>
+        <el-table
+          :data="tableData"
+          border
+          height="250"
+          :row-class-name="tableRowClassName"
+          header-row-class-name="table-row-class-name"
+          align="center"
+          style="width: 100%">
+          <el-table-column
+            prop="name"
+            label="项目">
+          </el-table-column>
+          <el-table-column
+            prop="name"
+            label="数量">
+          </el-table-column>
+          <el-table-column
+            prop="name"
+            label="单价">
+          </el-table-column>
+          <el-table-column
+            prop="name"
+            label="金额">
+          </el-table-column>
+          <el-table-column
+            prop="name"
+            label="备注">
+          </el-table-column>
+        </el-table>
       </div>
     </div>
     <!-- <el-table
@@ -203,11 +231,12 @@
 
 <script>
 import { mapGetters } from 'vuex'
-
+import Echarts from 'vue-echarts'
 export default {
   name: 'Dashboard',
   data () {
     return {
+      checked: false,
       carouselList: [],
       autoplay: false,
       inputStyle: {
@@ -288,6 +317,37 @@ export default {
     font-size: 30px;
     line-height: 46px;
   }
+}
+.inline-timg {
+  width: 30px;
+  height: 30px;
+  background-color: #ffffff;
+  margin-right: 10px;
+}
+.index-list {
+  width: 18%;
+  height: 160px;
+  padding-top: 20px;
+  background: #2b3648;
+  font-size: 16px;
+  &:first-child {
+    width: 24%;
+  }
+}
+.list-tag-first {
+  padding-top: 30px;
+  
+}
+.list-img {
+  width: 20px;
+  height: 20px;
+  background-color: #ffffff;
+}
+.list-ind {
+  padding-top: 15px;
+}
+.list-num {
+  padding: 20px 0;
 }
 .tab-list {
   justify-content: flex-start;
